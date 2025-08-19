@@ -1,0 +1,21 @@
+modules = ["python-3.12"]
+run = "python bot.py"
+
+[nix]
+channel = "stable-25_05"
+packages = ["libxcrypt", "openssl", "postgresql"]
+
+[workflows]
+runButton = "Run Bot"
+
+[[workflows.workflow]]
+name = "Run Bot"
+author = 45808119
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python bot.py"
+
+[deployment]
+run = ["sh", "-c", "python bot.py"]
